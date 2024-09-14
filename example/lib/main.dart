@@ -21,8 +21,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
