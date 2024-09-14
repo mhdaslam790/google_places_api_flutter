@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,9 +42,7 @@ class PlaceSearchField extends StatefulWidget {
     this.hideOnError = false,
     this.hideOnLoading = false,
     this.animationDuration,
-  })  : assert(apiKey.isNotEmpty, 'API key cannot be empty'),
-        assert(kIsWeb && webCorsProxyUrl == null || webCorsProxyUrl!.isEmpty,
-            'webCorsProxyUrl is required when running on the web');
+  }) : assert(apiKey.isNotEmpty, 'API key cannot be empty');
 
   /// The Google API key used for querying the Places API.
   final String apiKey;
@@ -157,6 +154,10 @@ class _PlaceSearchFieldState extends State<PlaceSearchField> {
   @override
   void initState() {
     configureInjection('prod');
+    if (kIsWeb &&
+        (widget.webCorsProxyUrl == null || widget.webCorsProxyUrl!.isEmpty))
+      assert(false, 'webCorsProxyUrl is required when running on the web');
+
     super.initState();
   }
 
