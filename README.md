@@ -1,44 +1,56 @@
-google_places_api_flutter
+# google_places_api_flutter
 
-google_places_api_flutter is a Flutter package for integrating Google Places API into your Flutter apps, offering real-time autocomplete suggestions, place details, and more.
+[![pub package](https://img.shields.io/pub/v/google_places_api_flutter.svg)](https://pub.dev/packages/google_places_api_flutter)
+[![Platform](https://img.shields.io/badge/platform-flutter-blue.svg)](https://flutter.dev/)
 
-✨ Features
-Autocomplete Places Search: Get real-time place suggestions as the user types.
-Place Details: Fetch detailed information for a specific place, including address, latitude, and longitude.
-Customizable UI: Easily style the autocomplete suggestions dropdown.
-Support for Lat/Long Retrieval: Option to retrieve latitude and longitude for selected places.
-🚀 Getting Started
-To get started with google_places_api_flutter, you'll need to create a Google API Key with access to the Places API.
+**google_places_api_flutter** is a Flutter package for integrating Google Places API into your Flutter apps, offering real-time autocomplete suggestions, place details, and more.
 
-1. Set Up Your Google API Key
-Visit the Google Cloud Console.
-Create a new project or use an existing one.
-Navigate to APIs & Services > Library.
-Search for Places API and enable it.
-Go to APIs & Services > Credentials, and create a new API key.
-(Optional) Restrict your API key to the Places API for enhanced security.
-2. Install the Package
-Add the following line to your pubspec.yaml file:
+---
 
-yaml
-Copy code
+## ✨ Features
+
+- **Autocomplete Places Search**: Get real-time place suggestions as the user types.
+- **Place Details**: Fetch detailed information for a specific place, including address, latitude, and longitude.
+- **Customizable UI**: Easily style the autocomplete suggestions dropdown.
+- **Support for Lat/Long Retrieval**: Option to retrieve latitude and longitude for selected places.
+
+---
+
+## 🚀 Getting Started
+
+To get started with **google_places_api_flutter**, you'll need to create a **Google API Key** with access to the **Places API**.
+
+### 1. Set Up Your Google API Key
+
+  Visit the [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project or use anÏ existing one.
+3. Navigate to **APIs & Services** > **Library**.
+4. Search for **Places API** and enable it.
+5. Go to **APIs & Services** > **Credentials**, and create a new API key.
+6. (Optional) Restrict your API key to the Places API for enhanced security.
+
+### 2. Install the Package
+
+Add the following line to your `pubspec.yaml` file:
+
+```yaml
 dependencies:
   google_places_api_flutter: ^1.0.0
-Run the following command to install the package:
+```
+## 🚀 Usage
 
-bash
-Copy code
-flutter pub get
-3. Usage
-Import the package:
-dart
-Copy code
+To use `google_places_api_flutter`, follow the steps below.
+
+### 1. Import the package:
+
+```dart
 import 'package:google_places_api_flutter/google_places_api_flutter.dart';
-Example: Autocomplete with Lat/Long Retrieval
-Here’s how to use PlaceSearchField to display an autocomplete search field, allowing users to select places and retrieve latitude/longitude:
+```
+### 2. Example: Autocomplete with Lat/Long Retrieval
 
-dart
-Copy code
+Here’s how to use `PlaceSearchField` to display an autocomplete search field, allowing users to select places and retrieve latitude/longitude:
+
+```dart
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_places_api_flutter/google_places_api_flutter.dart';
@@ -94,42 +106,23 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-⚙️ Parameters
-apiKey: Your Google API key.
-isLatLongRequired: Set to true to fetch latitude and longitude along with the place details.
-webCorsProxyUrl: Optional proxy URL for handling CORS issues in web apps.
-onPlaceSelected: Callback that returns the place's ID and latitude/longitude when a place is selected.
-decorationBuilder: A builder function to customize the look of the autocomplete suggestions dropdown.
-itemBuilder: Customize how each prediction item is displayed in the dropdown list.
-📱 Example App
-Clone this repository and navigate to the example directory to run the demo app:
+```
+### 📝 Notes
 
-bash
-Copy code
-git clone https://github.com/mhdaslam790/google_places_api_flutter.git
-cd google_places_api_flutter/example
-flutter run
-🔒 API Key Restrictions
-It's important to secure your API key by restricting access to it. Follow these steps to restrict your API key:
+- **`apiKey`**: Replace `YOUR_GOOGLE_API_KEY` with your actual Google API key.
+- **`isLatLongRequired`**: Set to `true` to fetch latitude and longitude along with the place details.
+- **`webCorsProxyUrl`**: This parameter is optional and used to handle CORS issues for web apps. You can omit it for mobile apps.
+- **`UI Customization`**: To see how to modify the UI components of the autocomplete field, refer to the [flutter_typeahead](https://pub.dev/packages/flutter_typeahead) package. This package offers extensive customization options for the typeahead widget used in the `PlaceSearchField`.
 
-Visit the Google Cloud Console.
-Go to APIs & Services > Credentials.
-Select your API key, then click Edit.
-Under Application Restrictions, select the platforms that can use this key (e.g., HTTP referrer for web apps, IP addresses, or mobile apps).
-Under API restrictions, limit the key to only access the Places API.
-🌟 Additional Features
-Place Photos: Fetch photos related to places using the Places API.
-Autocomplete Filters: You can add filters (e.g., restrict to a specific country or location type).
-💻 Contributing
-We welcome contributions! Feel free to fork this repository, open issues, and submit pull requests.
+## 💻 Contributing
 
-Fork the repository.
-Create a new branch.
-Make your changes and commit them.
-Push to your branch and submit a pull request.
-📄 License
-This package is licensed under the MIT License. See the LICENSE file for more details.
+We welcome contributions! If you’d like to contribute to the project, please follow these steps:
 
-📝 Notes:
-Replace YOUR_GOOGLE_API_KEY in the example with your actual Google API key.
-webCorsProxyUrl: This parameter is mainly for web environments to handle CORS issues. You can omit it for mobile apps.
+1. **Fork the repository**: Click the "Fork" button at the top right of the repository page to create your own copy of the project.
+2. **Create a new branch**: Create a new branch for your changes. This helps keep your work organized and separate from the main codebase.
+3. **Make your changes**: Implement your changes and test them thoroughly.
+4. **Commit your changes**: Add a clear and concise commit message describing your changes.
+5. **Push to your branch**: Push your changes to your forked repository.
+6. **Submit a pull request**: Open a pull request from your branch to the `main` branch of the original repository. Provide a detailed description of your changes and why they are needed.
+
+We appreciate your contributions and will review your pull request as soon as possible.
