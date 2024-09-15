@@ -2,7 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2024-09-15
+<a name="unreleased"></a>
+## [Unreleased]
+
+### Fix
+- add closure
+
+
+<a name="v1.0.1"></a>
+## [v1.0.1] - 2024-09-15
+
+<a name="v1.0.0"></a>
+## v1.0.0 - 2024-09-15
 
 ### Added
 - **Initial Release**: The first version of the `google_places_api_flutter` package.
