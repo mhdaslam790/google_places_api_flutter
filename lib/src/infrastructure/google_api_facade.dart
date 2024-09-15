@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_api_headers/google_api_headers.dart';
-import 'package:google_places_api_flutter/src/domain/core/constants/Google_Api_error_constants.dart';
+import 'package:google_places_api_flutter/src/domain/core/constants/google_api_error_constants.dart';
 import 'package:google_places_api_flutter/src/domain/core/constants/api_constants.dart';
 import 'package:google_places_api_flutter/src/domain/google_api/common_failure.dart';
 import 'package:google_places_api_flutter/src/domain/google_api/i_google_api_facade.dart';

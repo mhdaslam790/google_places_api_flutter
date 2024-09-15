@@ -1,26 +1,28 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
 class PlaceDetailsModel {
-  final List<dynamic>? html_attributions;
+  final List<dynamic>? htmlAttributions;
   final Result result;
   final String status;
   PlaceDetailsModel({
-    this.html_attributions,
+    this.htmlAttributions,
     required this.result,
     required this.status,
   });
 
   PlaceDetailsModel copyWith({
-    ValueGetter<List<dynamic>?>? html_attributions,
+    ValueGetter<List<dynamic>?>? htmlAttributions,
     Result? result,
     String? status,
   }) {
     return PlaceDetailsModel(
-      html_attributions: html_attributions != null
-          ? html_attributions()
-          : this.html_attributions,
+      htmlAttributions: htmlAttributions != null
+          ? htmlAttributions()
+          : this.htmlAttributions,
       result: result ?? this.result,
       status: status ?? this.status,
     );
@@ -28,7 +30,7 @@ class PlaceDetailsModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'html_attributions': html_attributions,
+      'html_attributions': htmlAttributions,
       'result': result.toMap(),
       'status': status,
     };
@@ -36,7 +38,7 @@ class PlaceDetailsModel {
 
   factory PlaceDetailsModel.fromMap(Map<String, dynamic> map) {
     return PlaceDetailsModel(
-      html_attributions: List<dynamic>.from(map['html_attributions']),
+      htmlAttributions: List<dynamic>.from(map['html_attributions']),
       result: Result.fromMap(map['result']),
       status: map['status'] ?? '',
     );
@@ -49,21 +51,21 @@ class PlaceDetailsModel {
 
   @override
   String toString() =>
-      'PlaceDetailsModel(html_attributions: $html_attributions, result: $result, status: $status)';
+      'PlaceDetailsModel(html_attributions: $htmlAttributions, result: $result, status: $status)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
     return other is PlaceDetailsModel &&
-        listEquals(other.html_attributions, html_attributions) &&
+        listEquals(other.htmlAttributions, htmlAttributions) &&
         other.result == result &&
         other.status == status;
   }
 
   @override
   int get hashCode =>
-      html_attributions.hashCode ^ result.hashCode ^ status.hashCode;
+      htmlAttributions.hashCode ^ result.hashCode ^ status.hashCode;
 }
 
 class Result {
