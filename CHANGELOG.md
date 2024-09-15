@@ -1,12 +1,18 @@
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.0.3"></a>
+## [v1.0.3] - 2024-09-15
+
 ### Fix
+- rename file
+- add freezed_annotation
+- remove test
 - add closure
+
+### Release
+- 1.0.3
 
 
 <a name="v1.0.1"></a>
