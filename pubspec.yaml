@@ -1,8 +1,7 @@
 name: google_places_api_flutter
-description: "A new Flutter plugin project."
-version: 0.0.1
-author: Mohammad aslam ansari <mhdaslam790@gmail.com>
-homepage: https://github.com/mhdaslam790/google_places_api_flutter
+description: Flutter package for integrating Google Places API into your Flutter apps, offering real-time autocomplete suggestions, place details, and more.
+version: 1.0.0
+homepage: https://github.com/mhdaslam790/google_places_api_flutter.git
 
 environment:
   sdk: ^3.5.0
