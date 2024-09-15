@@ -155,9 +155,9 @@ class _PlaceSearchFieldState extends State<PlaceSearchField> {
   void initState() {
     configureInjection('prod');
     if (kIsWeb &&
-        (widget.webCorsProxyUrl == null || widget.webCorsProxyUrl!.isEmpty))
+        (widget.webCorsProxyUrl == null || widget.webCorsProxyUrl!.isEmpty)) {
       assert(false, 'webCorsProxyUrl is required when running on the web');
-
+    }
     super.initState();
   }
 
