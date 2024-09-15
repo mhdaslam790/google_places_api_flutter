@@ -22,12 +22,12 @@ To get started with **google_places_api_flutter**, you'll need to create a **Goo
 
 ### 1. Set Up Your Google API Key
 
-  Visit the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project or use anÏ existing one.
-3. Navigate to **APIs & Services** > **Library**.
-4. Search for **Places API** and enable it.
-5. Go to **APIs & Services** > **Credentials**, and create a new API key.
-6. (Optional) Restrict your API key to the Places API for enhanced security.
+1. **Visit the [Google Cloud Console](https://console.cloud.google.com/).**
+2. **Create a new project** or use an existing one.
+3. **Navigate to** **APIs & Services** > **Library**.
+4. **Search for** **Places API** and enable it.
+5. **Go to** **APIs & Services** > **Credentials**, and create a new API key.
+6. **(Optional)** Restrict your API key to the Places API for enhanced security.
 
 ### 2. Install the Package
 
