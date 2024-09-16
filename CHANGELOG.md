@@ -2,10 +2,10 @@
 ## [Unreleased]
 
 
-<a name="v1.0.3"></a>
-## [v1.0.3] - 2024-09-15
-
+<a name="v1.0.4"></a>
+## [v1.0.4] - 2024-09-15
 ### Fix
+- add license in pubs
 - rename file
 - add freezed_annotation
 - remove test
@@ -21,24 +21,6 @@
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2024-09-15
 
-### Added
-- **Initial Release**: The first version of the `google_places_api_flutter` package.
-- **PlaceSearchField Widget**: Implemented the `PlaceSearchField` widget for autocomplete place search.
-- **Google Places API Integration**: Integrated Google Places API to fetch place predictions and details.
-- **Support for Latitude and Longitude**: Option to fetch latitude and longitude along with place details.
-- **Customizable UI**: Added support for customizing the appearance of the autocomplete dropdown.
-
-### Changed
-- **UI Customization**: Added options to style the autocomplete dropdown using `decorationBuilder` and `itemBuilder` parameters.
-
-### Fixed
-- **Initial Bugs**: Addressed minor bugs and ensured basic functionality of the `PlaceSearchField` widget.
-
-### Deprecated
-- None
-
-### Removed
-- None
-
-### Security
-- None
+[Unreleased]: y/compare/v1.0.4...HEAD
+[v1.0.4]: y/compare/v1.0.1...v1.0.4
+[v1.0.1]: y/compare/v1.0.0...v1.0.1

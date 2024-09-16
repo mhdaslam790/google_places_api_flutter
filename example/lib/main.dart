@@ -21,6 +21,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
