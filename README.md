@@ -20,7 +20,7 @@
 
 Here's a demo showcasing the **google_places_api_flutter** package in action:
 
-![Google Places API Flutter Demo](./demo.gif)
+![Google Places API Flutter Demo](https://github.com/mhdaslam790/google_places_api_flutter/blob/main/demo.gif?raw=true)
 
 ---
 
