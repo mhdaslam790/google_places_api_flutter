@@ -16,6 +16,14 @@
 
 ---
 
+### 🌟 Demo
+
+Here's a demo showcasing the **google_places_api_flutter** package in action:
+
+![Google Places API Flutter Demo](./demo.gif)
+
+---
+
 ## 🚀 Getting Started
 
 To get started with **google_places_api_flutter**, you'll need to create a **Google API Key** with access to the **Places API**.
