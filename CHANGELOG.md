@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v1.0.5"></a>
+## [v1.0.5] - 2024-09-16
+### Add
+- controller
+
+
 <a name="v1.0.4"></a>
 ## [v1.0.4] - 2024-09-15
 ### Fix

@@ -1,6 +1,6 @@
 name: google_places_api_flutter
 description: Flutter package for integrating Google Places API into your Flutter apps, offering real-time autocomplete suggestions, place details, and more.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/mhdaslam790/google_places_api_flutter.git
 
 environment:
