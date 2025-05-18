@@ -1,6 +1,14 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Release
+- 1.0.8
+
+<a name="v1.0.8"></a>
+## [1.0.8] - 2025-05-18
+### Fixed
+- Minor updates to package metadata and dependencies.
+
 
 <a name="v1.0.6"></a>
 ## [v1.0.6] - 2024-09-16
