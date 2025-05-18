@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 ### Release
+- 1.0.9
+
+### Release
 - 1.0.8
 
 <a name="v1.0.8"></a>
