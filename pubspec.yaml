@@ -1,6 +1,6 @@
 name: google_places_api_flutter
 description: Flutter package for integrating Google Places API into your Flutter apps, offering real-time autocomplete suggestions, place details, and more.
-version: 1.0.9
+version: 2.0.0
 homepage: https://github.com/mhdaslam790/google_places_api_flutter.git
 
 environment:
@@ -8,28 +8,20 @@ environment:
   flutter: '>=3.3.0'
 
 dependencies:
-  build_runner: ^2.4.12
+  
   dartz: ^0.10.1
   dio: ^5.7.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^9.1.1
   flutter_typeahead: ^5.2.0
-  freezed: ^3.0.6
-  freezed_annotation: ^3.0.0
-  get_it: ^8.0.3
   google_api_headers: ^4.2.0
-  injectable: ^2.4.4
   logger: ^2.4.0
-  mockito: ^5.4.4
    
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
  
-  injectable_generator: ^2.6.2
 
 license: MIT 
 

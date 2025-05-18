@@ -1,18 +1,36 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+abstract class CommonFailure {
+  const CommonFailure();
+}
 
-part 'common_failure.freezed.dart';
+class CancelledByUser extends CommonFailure {
+  const CancelledByUser();
+}
 
-@freezed
-class CommonFailure with _$CommonFailure {
-  const factory CommonFailure.cancelledByUser() = CancelledByUser;
-  const factory CommonFailure.serverError(String error) = ServerError;
-  const factory CommonFailure.notFound() = NotFound;
+class ServerError extends CommonFailure {
+  final String error;
+  const ServerError(this.error);
+}
 
-  const factory CommonFailure.overQueryLimit() = OverQueryLimit;
-  const factory CommonFailure.invalidRequest() = InvalidRequest;
-  const factory CommonFailure.requestDenied() = RequestDenied;
-  const factory CommonFailure.notAutherizedtoAccessResource() =
-      NotAutherizedtoAccessResource;
+class NotFound extends CommonFailure {
+  const NotFound();
+}
 
-  const factory CommonFailure.requestTimeout() = RequestTimeout;
+class OverQueryLimit extends CommonFailure {
+  const OverQueryLimit();
+}
+
+class InvalidRequest extends CommonFailure {
+  const InvalidRequest();
+}
+
+class RequestDenied extends CommonFailure {
+  const RequestDenied();
+}
+
+class NotAuthorizedToAccessResource extends CommonFailure {
+  const NotAuthorizedToAccessResource();
+}
+
+class RequestTimeout extends CommonFailure {
+  const RequestTimeout();
 }
