@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:google_places_api_flutter/src/google_api/googl_api_bloc.dart';
 import 'package:google_places_api_flutter/src/domain/google_api/place_details_model.dart';
 import 'package:google_places_api_flutter/src/domain/google_api/prediction_model.dart';
-import 'package:google_places_api_flutter/src/domain/injection.dart';
+import 'package:google_places_api_flutter/src/infrastructure/core/rest-api/api_service.dart';
+import 'package:google_places_api_flutter/src/infrastructure/google_api_facade.dart';
 
 class PlaceSearchField extends StatefulWidget {
   PlaceSearchField({
@@ -151,9 +150,58 @@ class PlaceSearchField extends StatefulWidget {
 }
 
 class _PlaceSearchFieldState extends State<PlaceSearchField> {
+  final _googleApiFacade = GoogleApiFacade(apiService: ApiServiceV2());
+
+  Future<List<Prediction>> _getSuggestions(String input) async {
+    if (input.isEmpty) return [];
+
+    final result = await _googleApiFacade.getLocationInfo(
+      apikey: widget.apiKey,
+      value: input,
+      webCorsUrl: widget.webCorsProxyUrl,
+    );
+
+    return result.fold(
+      (failure) {
+        debugPrint('Suggestion fetch failed: $failure');
+        return <Prediction>[];
+      },
+      (predictionModel) => predictionModel.predictions,
+    );
+  }
+
+  Future<void> _onSelected(Prediction prediction) async {
+    PlaceDetailsModel? details;
+
+    if (widget.isLatLongRequired) {
+      final result = await _googleApiFacade.getPlaceDetails(
+        placeId: prediction.place_id,
+        apikey: widget.apiKey,
+        webCorsUrl: widget.webCorsProxyUrl,
+      );
+
+      result.fold(
+        (failure) {
+          debugPrint('Place details fetch failed: $failure');
+        },
+        (data) {
+          details = data;
+        },
+      );
+    }
+
+    widget.onPlaceSelected(prediction, details);
+
+    if (widget.controller != null) {
+      widget.controller!.text = prediction.description;
+      widget.controller!.selection = TextSelection.fromPosition(
+        TextPosition(offset: prediction.description.length),
+      );
+    }
+  }
+
   @override
   void initState() {
-    configureInjection('prod');
     if (kIsWeb &&
         (widget.webCorsProxyUrl == null || widget.webCorsProxyUrl!.isEmpty)) {
       assert(false, 'webCorsProxyUrl is required when running on the web');
@@ -163,80 +211,37 @@ class _PlaceSearchFieldState extends State<PlaceSearchField> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GooglApiBloc>(
-      create: (context) => getIt<GooglApiBloc>(),
-      child: TypeAheadField<Prediction>(
-        controller: widget.controller,
-        direction: widget.direction,
-        emptyBuilder: widget.emptyBuilder,
-        builder: widget.builder,
-        decorationBuilder: widget.decorationBuilder,
-        itemBuilder: widget.itemBuilder,
-        debounceDuration: widget.debounceDuration,
-        hideOnSelect: widget.hideOnSelect,
-        hideOnUnfocus: widget.hideOnUnfocus,
-        hideWithKeyboard: widget.hideWithKeyboard,
-        retainOnLoading: widget.retainOnLoading,
-        itemSeparatorBuilder: widget.itemSeparatorBuilder,
-        listBuilder: widget.listBuilder,
-        animationDuration: widget.animationDuration,
-        autoFlipDirection: widget.autoFlipDirection,
-        autoFlipMinHeight: widget.autoFlipMinHeight,
-        errorBuilder: widget.errorBuilder,
-        focusNode: widget.focusNode,
-        hideKeyboardOnDrag: widget.hideKeyboardOnDrag,
-        hideOnEmpty: widget.hideOnEmpty,
-        hideOnError: widget.hideOnError,
-        hideOnLoading: widget.hideOnLoading,
-        loadingBuilder: widget.loadingBuilder,
-        scrollController: widget.scrollController,
-        suggestionsController: widget.suggestionsController,
-        transitionBuilder: widget.transitionBuilder,
-        constraints: widget.constraints,
-        offset: widget.offset,
-        onSelected: (prediction) {
-          if (widget.isLatLongRequired) {
-            final bloc = getIt<GooglApiBloc>();
-            bloc.add(
-              GooglApiEvent.getPlaceDetailsFromPlaceId(
-                predictionModel: prediction,
-                apikey: widget.apiKey,
-                onPlaceSelected: widget.onPlaceSelected,
-                webCorsUrl: widget.webCorsProxyUrl,
-              ),
-            );
-          } else {
-            widget.onPlaceSelected(
-              prediction,
-              null,
-            );
-          }
-
-          if (widget.controller != null) {
-            widget.controller!.text = prediction.description;
-            widget.controller!.selection = TextSelection.fromPosition(
-              TextPosition(
-                offset: prediction.description.length,
-              ),
-            );
-          }
-        },
-        suggestionsCallback: (data) async {
-          if (data.isEmpty) return [];
-          final bloc = getIt<GooglApiBloc>();
-          bloc.add(GooglApiEvent.getLocationInfo(
-            text: data,
-            apikey: widget.apiKey,
-            webCorsUrl: widget.webCorsProxyUrl,
-          ));
-          return bloc.stream
-              .where((state) => !state.isLocationLoading)
-              .map((state) =>
-                  state.predicitionInfo?.predictions.map((p) => p).toList() ??
-                  [])
-              .first;
-        },
-      ),
+    return TypeAheadField<Prediction>(
+      controller: widget.controller,
+      suggestionsCallback: _getSuggestions,
+      itemBuilder: widget.itemBuilder,
+      direction: widget.direction,
+      emptyBuilder: widget.emptyBuilder,
+      builder: widget.builder,
+      decorationBuilder: widget.decorationBuilder,
+      debounceDuration: widget.debounceDuration,
+      hideOnSelect: widget.hideOnSelect,
+      hideOnUnfocus: widget.hideOnUnfocus,
+      hideWithKeyboard: widget.hideWithKeyboard,
+      retainOnLoading: widget.retainOnLoading,
+      itemSeparatorBuilder: widget.itemSeparatorBuilder,
+      listBuilder: widget.listBuilder,
+      animationDuration: widget.animationDuration,
+      autoFlipDirection: widget.autoFlipDirection,
+      autoFlipMinHeight: widget.autoFlipMinHeight,
+      errorBuilder: widget.errorBuilder,
+      focusNode: widget.focusNode,
+      hideKeyboardOnDrag: widget.hideKeyboardOnDrag,
+      hideOnEmpty: widget.hideOnEmpty,
+      hideOnError: widget.hideOnError,
+      hideOnLoading: widget.hideOnLoading,
+      loadingBuilder: widget.loadingBuilder,
+      scrollController: widget.scrollController,
+      suggestionsController: widget.suggestionsController,
+      transitionBuilder: widget.transitionBuilder,
+      constraints: widget.constraints,
+      offset: widget.offset,
+      onSelected: _onSelected,
     );
   }
 }

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+## [2.0.0] - 2025-05-18
+### ⚠️ Breaking Changes
+- Removed support for `flutter_bloc`, `freezed`, `injectable`, and related patterns.
+- Replaced automatic dependency injection with manual instantiation.
+- Removed `CommonFailure` types using `freezed`.
+- Consumers must now use the simplified `GoogleApiFacade` directly.
+
 ### Release
 - 1.0.9
 
