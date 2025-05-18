@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Release
+- 1.0.8
+
+<a name="v1.0.8"></a>
+## [1.0.8] - 2025-05-18
+### Fixed
+- Minor updates to package metadata and dependencies.
+
+
+<a name="v1.0.6"></a>
+## [v1.0.6] - 2024-09-16
+### Docs
+- correct demo URL
+
+### Release
+- 1.0.5
+
+
+<a name="v1.0.5"></a>
+## [v1.0.5] - 2024-09-16
+### Add
+- controller
+
+
+<a name="v1.0.4"></a>
+## [v1.0.4] - 2024-09-15
 ### Fix
 - add closure
 
