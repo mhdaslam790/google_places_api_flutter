@@ -22,16 +22,29 @@ class GoogleApiFacade implements IGoogleApiFacade {
     required String apikey,
     required String value,
     required String? webCorsUrl,
+    List<String>? countriesCodes,
   }) async {
     try {
       final headers = await const GoogleApiHeaders().getHeaders();
       final url = kIsWeb && webCorsUrl != null
           ? '$webCorsUrl/${ApiConstants.baseUrl}${ApiConstants.autocomplete}'
           : ApiConstants.autocomplete;
+      String? components;
+
+      if (countriesCodes != null && countriesCodes.isNotEmpty) {
+        components = countriesCodes
+            .map((code) => 'country:${code.toUpperCase()}')
+            .join('|');
+      }
 
       final response = await apiService.dioClient.get(
         url,
-        queryParameters: {"input": value, "key": apikey},
+        queryParameters: {
+          "input": value,
+          "key": apikey,
+          if (components != null && components.isNotEmpty)
+            "components": components,
+        },
         options: Options(headers: headers),
       );
 

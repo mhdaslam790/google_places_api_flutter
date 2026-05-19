@@ -41,6 +41,7 @@ class PlaceSearchField extends StatefulWidget {
     this.hideOnError = false,
     this.hideOnLoading = false,
     this.animationDuration,
+    this.countriesCodes,
   }) : assert(apiKey.isNotEmpty, 'API key cannot be empty');
 
   /// The Google API key used for querying the Places API.
@@ -145,6 +146,9 @@ class PlaceSearchField extends StatefulWidget {
   /// Offset for positioning the dropdown relative to the text field.
   final Offset? offset;
 
+  /// Optional country codes to restrict the search results to specific countries.
+  final List<String>? countriesCodes;
+
   @override
   State<PlaceSearchField> createState() => _PlaceSearchFieldState();
 }
@@ -159,6 +163,7 @@ class _PlaceSearchFieldState extends State<PlaceSearchField> {
       apikey: widget.apiKey,
       value: input,
       webCorsUrl: widget.webCorsProxyUrl,
+      countriesCodes: widget.countriesCodes,
     );
 
     return result.fold(
